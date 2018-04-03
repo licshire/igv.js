@@ -460,7 +460,10 @@ var igv = (function (igv) {
 
         all = [];
         if (trackView.track.menuItemList) {
-            all = menuItems.concat(igv.trackMenuItemListHelper(trackView.track.menuItemList(popover)));
+            all = menuItems.concat(igv.trackMenuItemListHelper(trackView.track.menuItemList(popover),
+                function () {
+                    popover.hide();
+                }));
         }
         if (trackView.track.removable !== false) {
 
@@ -475,6 +478,7 @@ var igv = (function (igv) {
                 }, true)
             );
         }
+
 
         return all;
     };
@@ -514,7 +518,7 @@ var igv = (function (igv) {
                 if (item.click) {
                     $e.click(function () {
                         item.click();
-                        if(typeof callback === "function") callback();
+                        if (typeof callback === "function") callback();
                     });
                 }
 
