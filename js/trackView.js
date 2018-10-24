@@ -113,7 +113,7 @@ var igv = (function (igv) {
     igv.TrackView.prototype.renderSVGContext = function (config) {
 
         // clone config
-        let viewportConfig = JSON.parse(JSON.stringify(config));
+        let viewportConfig = Object.assign({}, config);
 
         this.viewports
             .reduce(function(accumulation, viewport) {
